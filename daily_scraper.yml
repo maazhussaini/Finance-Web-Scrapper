@@ -23,6 +23,8 @@ jobs:
       - name: Run scraping script
         env:
           API_KEY: ${{ secrets.API_KEY }}
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
           SHEET_ID: ${{ secrets.SHEET_ID }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GOOGLE_SCRIPT_URL: ${{ secrets.GOOGLE_SCRIPT_URL }}
+          URL: ${{ secrets.URL }}
         run: python main.py
