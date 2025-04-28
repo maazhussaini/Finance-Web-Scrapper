@@ -6,11 +6,20 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os
 from datetime import datetime
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import requests
 
-# Load .env file
-load_dotenv()
+# Load .env only if it exists
+# dotenv_path = '.env'
+# if os.path.exists(dotenv_path):
+#     load_dotenv(dotenv_path)
+
+# Now safely access environment variables
+required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDENTIALS', 'GOOGLE_SCRIPT_URL', 'URL']
+missing = [var for var in required_envs if not os.getenv(var)]
+
+if missing:
+    raise ValueError(f"Missing environment variables: {', '.join(missing)}")
 
 # Configure Logging
 logging.basicConfig(
