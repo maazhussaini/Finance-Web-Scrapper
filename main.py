@@ -9,18 +9,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 import requests
 
-# Load .env only if it exists
-dotenv_path = '.env'
-if os.path.exists(dotenv_path):
-    load_dotenv(dotenv_path)
-
-# Now safely access environment variables
-required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDENTIALS', 'GOOGLE_SCRIPT_URL', 'URL']
-missing = [var for var in required_envs if not os.getenv(var)]
-
-if missing:
-    raise ValueError(f"Missing environment variables: {', '.join(missing)}")
-
 # Configure Logging
 logging.basicConfig(
     level=logging.DEBUG,
@@ -28,6 +16,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+def is_github_action_environment():
+    """Detect if running inside GitHub Actions runner."""
+    return os.getenv("GITHUB_ACTIONS") == "true"
 
 def create_new_google_sheet_tab(sheet_name: str, file_id: str, script_url: str) -> None:
     """Sends a POST request to Google Apps Script URL to create a new sheet/tab."""
@@ -131,14 +123,23 @@ def write_to_google_sheet(data: List[List[str]], sheet_id: str, creds_file: str,
     logger.info("Inserted data into worksheet: %s", worksheet_name)
     
 if __name__ == "__main__":
+    
+    # Conditionally load .env ONLY if running locally
+    if not is_github_action_environment():
+        from dotenv import load_dotenv
+        load_dotenv()
+
+    # Now, environment variables should exist
+    required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDENTIALS', 'GOOGLE_SCRIPT_URL', 'URL']
+    missing = [var for var in required_envs if not os.getenv(var)]
+
+    if missing:
+        raise ValueError(f"Missing environment variables: {', '.join(missing)}")
+    
     API_KEY = os.getenv("API_KEY")
     SHEET_ID = os.getenv("SHEET_ID")
     GOOGLE_CREDS_FILE = os.getenv("GOOGLE_CREDS_FILE")
     URL = os.getenv("URL")
-    
-    if not all([API_KEY, SHEET_ID, GOOGLE_CREDS_FILE, URL]):
-        logger.error("Missing environment variables. Please check your .env file.")
-        raise ValueError("Missing environment variables")
     
     logger.info("Environment variables loaded successfully.")
     
