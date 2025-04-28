@@ -130,7 +130,7 @@ if __name__ == "__main__":
         load_dotenv()
 
     # Now, environment variables should exist
-    required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDENTIALS', 'GOOGLE_SCRIPT_URL', 'URL']
+    required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDS_FILE', 'GOOGLE_SCRIPT_URL', 'URL']
     missing = [var for var in required_envs if not os.getenv(var)]
 
     if missing:
