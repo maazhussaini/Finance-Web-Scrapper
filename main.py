@@ -107,12 +107,16 @@ def write_to_google_sheet(data: List[List[str]], sheet_id: str, creds_file: str,
         "https://www.googleapis.com/auth/drive"
     ]
 
-    if not os.path.exists(creds_file):
-        logger.error("Google credentials file not found: %s", creds_file)
-        credentials_dict = json.loads(creds_file)  # Parse the JSON string to dict
-        credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
+    # Check if input is a valid local file or JSON content
+    if os.path.exists(creds_file):
+        # Local development: creds_input is a filepath
+        logger.info("Using credentials from local file: %s", creds_file)
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(creds_file, scope)
     else:
-        credentials = ServiceAccountCredentials.from_json_keyfile_name(credentials_dict, scope)
+        # GitHub Actions: creds_file is a JSON string
+        logger.info("Using credentials from environment secret.")
+        credentials_dict = json.loads(creds_file)
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
     
     client = gspread.authorize(credentials)
 
