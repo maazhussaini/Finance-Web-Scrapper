@@ -140,6 +140,7 @@ if __name__ == "__main__":
     API_KEY = os.getenv("API_KEY")
     SHEET_ID = os.getenv("SHEET_ID")
     GOOGLE_CREDS_FILE = os.getenv("GOOGLE_CREDS_FILE")
+    GOOGLE_SCRIPT_URL = os.getenv("GOOGLE_SCRIPT_URL")
     URL = os.getenv("URL")
     
     API_KEY = "fc-6b0c558c9e1c40eca1e71cf46f324538"
