@@ -110,7 +110,10 @@ def write_to_google_sheet(data: List[List[str]], sheet_id: str, creds_file: str,
     if not os.path.exists(creds_file):
         logger.error("Google credentials file not found: %s", creds_file)
         credentials_dict = json.loads(creds_file)  # Parse the JSON string to dict
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(credentials_dict, scope)
+        credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_dict, scope)
+    else:
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(credentials_dict, scope)
+    
     client = gspread.authorize(credentials)
 
     # sheet = client.open_by_key(sheet_id).sheet1
