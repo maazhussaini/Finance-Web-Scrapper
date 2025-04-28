@@ -143,20 +143,8 @@ if __name__ == "__main__":
     
     API_KEY = "fc-6b0c558c9e1c40eca1e71cf46f324538"
     SHEET_ID = "1uhJR-tj8V7nYAx_5Ss28sphDOV-H5jIvX3ZshI0nlZA"
-    GOOGLE_CREDS_FILE = {
-        "type": "service_account",
-        "project_id": "gen-lang-client-0420394233",
-        "private_key_id": "5715b1079589742b65d2453897ac9f68855ba8f6",
-        "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwNAOo561NF9uj\nwt55FbbsndWPRgUwjl0NQhdAOB3ZsJU9aZ3f8+YZWkiaghq2ORrIqL88OUTzX49+\nhvIjtBU4Rsoxv57EVLerquFJCgSzK7NQmJq4ZAQe7dV9PqsQEmnvQjGn4tGvU8L5\n8dlpvckc+L/ZUY9rYDk03fuMDGXPppo3Goh6FT4wFMz16MrcJmA9BAhQckBbRyXY\nDdkOB8vscL1+kuuVY1NsIBVMfDfttDiI2yFIjIVMqhMNOX2zHmsJ8WxyMYf2r6wo\nT/uaAQGtbmQTyjWouNUH0z+2SxkyPjNj1Icu+F8SyI0EvFajDD2ZSifZZI9vDaF+\n0+7GeA2XAgMBAAECggEAR6nYBTW4y76U051Ze1jEDadB6OQbDz0PhmlnaHSKW3PQ\ntuoCTkf1wUDxf3nD4HIIPS04ngdSzkMC6vx6dd/zs3BDIwmiyooEK5szxk9/StnO\ns8xlPPJcpLGpXyeCTmaW1DsRVA1Rp+PCzII7ISERrylSadIcqRi5G5HfEX4nWFTm\n1xN/NKpEmrtQ1ZQmb9dWDZYa4b/EcjTR2lWGCOIiTFc9Y+5Mce08D75h3JCp36Zy\nkdAmFKFIPzJwL2EdOFSfVO5hWrMdmwIOXFSANboHk+ix+/1Fq8OigyWZBiEBvfHY\nCKY9kp6Jtdc/SvtEyxtbtacnALT2ihiWt5Pd3/I2PQKBgQDaUcK6RAc0i0Z56RVi\nDGnjtKi1wB1bO5g4sydLRRorx56EzAbQwZyssYxmmyRr2EOMZngv/cBvzrMPNXrC\nrNzXM7VRZXo+Ts4zgS2AljP1qK3zPWmfeoSrnE6vv7gGb2Ig7+Wt0n88NHwlODsO\nvQN3KYwB97Kwqn4xs6P06/r7cwKBgQDOnWN2aAWaOSza22lS9ipj8jgx3fjVy6DE\n17nMdsaIsySyZwzbhwQa46QV7kXdzQKpZQKPDRNyGQLvaAiaCemCMDOpIZ7FBKDz\nSF/XsK1zTf82E3an7dUOehxRzmYqGHGH56iK+LsJzo/k6Htiy/2UBKe9TQTw4FW+\nthhqudjkTQKBgEEy8aiW8F/syBtYVJ53fpgWN9wvh5Tbc1ZbinycIni4oMqf89kc\nOSIJ1BhAdNwQNfwUDginC3VYkXkVS5gf78QFGT05xQwelM4k4eXo9ZOD0I834/dQ\nq5Zkk8tAwkCJuxCDFGCY4I6mTfz/kgOQxxwrODjONHs2L4HAWFKotsepAoGBAJNE\nKziiPBwI1KfJ6/Bt9Rj39IXWqR353cVv3caWgju9NFLUkJ2IRqzDxJi9FJ9bGKKU\nlJZRw6J3oVfy1u60UfOxV6EdjYTwH6hH1chu7bJZzaZFiTV4l3uSHc1RSBCJC6LK\nw58KWoZK7NVDv25T55IxHz4WP4dQ3szoDc9EWAuhAoGAPxcBV+nRgiDm/IsxXR8/\n8ooE30+7d67B+DQ1md7UWrbrmyw1Nw9SlrNSCNHYaUWM7XW+vIJUKrZ9du7RARBu\nuYgWuepoP/ajcPHlpHz5y7SbpIYyHiqhjgfkEMwgZxLCU+8LL8nleAOTlfPAe7jY\nlETu1ts3Jvq6EMg/653JYpw=\n-----END PRIVATE KEY-----\n",
-        "client_email": "github-actions-scraper@gen-lang-client-0420394233.iam.gserviceaccount.com",
-        "client_id": "110202915560105624274",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/github-actions-scraper%40gen-lang-client-0420394233.iam.gserviceaccount.com",
-        "universe_domain": "googleapis.com"
-        }
-
+    GOOGLE_CREDS_FILE = "gen-lang-client-0420394233-5715b1079589.json"
+    GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbzb6SzYF_eeQBoBs_mGQgejsFsUs4E6kXv_Qt4ZZ2TQOkiyNysi40-rF273nqySozs/exec"
     URL = "https://www.saudiexchange.sa/Resources/Reports-v2/DailyFinancialIndicators_en.html"
     
     logger.info("Environment variables loaded successfully.")
@@ -168,7 +156,7 @@ if __name__ == "__main__":
         create_new_google_sheet_tab(
             sheet_name=today_date,
             file_id=SHEET_ID,
-            script_url=os.getenv("GOOGLE_SCRIPT_URL")
+            script_url=GOOGLE_SCRIPT_URL
         )
         table = scrape_table(URL, API_KEY, table_index=0)
         write_to_google_sheet(table, SHEET_ID, GOOGLE_CREDS_FILE, today_date)
