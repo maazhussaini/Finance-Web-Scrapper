@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 import requests
+import json
 
 # Configure Logging
 logging.basicConfig(
@@ -106,7 +107,10 @@ def write_to_google_sheet(data: List[List[str]], sheet_id: str, creds_file: str,
         "https://www.googleapis.com/auth/drive"
     ]
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(creds_file, scope)
+    if not os.path.exists(creds_file):
+        logger.error("Google credentials file not found: %s", creds_file)
+        credentials_dict = json.loads(creds_file)  # Parse the JSON string to dict
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(credentials_dict, scope)
     client = gspread.authorize(credentials)
 
     # sheet = client.open_by_key(sheet_id).sheet1
