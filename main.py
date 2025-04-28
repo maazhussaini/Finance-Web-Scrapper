@@ -135,7 +135,7 @@ if __name__ == "__main__":
     missing = [var for var in required_envs if not os.getenv(var)]
 
     if missing:
-        raise ValueError(f"Missing environment variables: {', '.join(missing)}")
+        raise ValueError(f"Missing environment variables: `{', '.join(missing)}`")
     
     API_KEY = os.getenv("API_KEY")
     SHEET_ID = os.getenv("SHEET_ID")
