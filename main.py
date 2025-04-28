@@ -125,21 +125,22 @@ def write_to_google_sheet(data: List[List[str]], sheet_id: str, creds_file: str,
 if __name__ == "__main__":
     
     # Conditionally load .env ONLY if running locally
-    # if not is_github_action_environment():
-    #     from dotenv import load_dotenv
-    #     load_dotenv()
+    if not is_github_action_environment():
+        print("Loading environment variables from .env file...")
+        from dotenv import load_dotenv
+        load_dotenv()
 
-    # # Now, environment variables should exist
-    # required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDS_FILE', 'GOOGLE_SCRIPT_URL', 'URL']
-    # missing = [var for var in required_envs if not os.getenv(var)]
+    # Now, environment variables should exist
+    required_envs = ['API_KEY', 'SHEET_ID', 'GOOGLE_CREDS_FILE', 'GOOGLE_SCRIPT_URL', 'URL']
+    missing = [var for var in required_envs if not os.getenv(var)]
 
-    # if missing:
-    #     raise ValueError(f"Missing environment variables: {', '.join(missing)}")
+    if missing:
+        raise ValueError(f"Missing environment variables: {', '.join(missing)}")
     
-    # API_KEY = os.getenv("API_KEY")
-    # SHEET_ID = os.getenv("SHEET_ID")
-    # GOOGLE_CREDS_FILE = os.getenv("GOOGLE_CREDS_FILE")
-    # URL = os.getenv("URL")
+    API_KEY = os.getenv("API_KEY")
+    SHEET_ID = os.getenv("SHEET_ID")
+    GOOGLE_CREDS_FILE = os.getenv("GOOGLE_CREDS_FILE")
+    URL = os.getenv("URL")
     
     API_KEY = "fc-6b0c558c9e1c40eca1e71cf46f324538"
     SHEET_ID = "1uhJR-tj8V7nYAx_5Ss28sphDOV-H5jIvX3ZshI0nlZA"
