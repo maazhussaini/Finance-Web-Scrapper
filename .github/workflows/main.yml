@@ -2,7 +2,7 @@ name: Daily Scraper Automation
 
 on:
   schedule:
-    - cron: "0 10 * * *" # Runs every day at 10 AM UTC
+    - cron: "46 8 * * *" # Runs every day at 10 AM UTC
   workflow_dispatch: # Allow manual run
 
 jobs:

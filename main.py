@@ -61,7 +61,7 @@ def scrape_table(
             formats=["rawHtml"],       # get unmodified HTML
             only_main_content=False    # full page, not just main content
         )
-        logger.debug("scrape_url() returned: %r", resp)
+        # logger.debug("scrape_url() returned: %r", resp)
     except Exception:
         logger.exception("Failed to call FirecrawlApp.scrape_url()")
         raise
